@@ -1,7 +1,8 @@
 
   import { defineConfig } from 'vite';
-  import react from '@vitejs/plugin-react-swc';
-  import path from 'path';
+import react from '@vitejs/plugin-react-swc';
+import path from 'path';
+import { fileURLToPath, URL } from 'node:url';
 
   export default defineConfig({
     plugins: [react()],
@@ -17,8 +18,8 @@
         'next-themes@0.4.6': 'next-themes',
         'lucide-react@0.487.0': 'lucide-react',
         'input-otp@1.4.2': 'input-otp',
-        'figma:asset/9138672a400b18c388b2e5ac915c3c9d651a1908.png': path.resolve(__dirname, './src/assets/9138672a400b18c388b2e5ac915c3c9d651a1908.png'),
-        'figma:asset/2bd5ea2fc5e21d5ff6a5d0a2672bd5685c545932.png': path.resolve(__dirname, './src/assets/2bd5ea2fc5e21d5ff6a5d0a2672bd5685c545932.png'),
+        'figma:asset/9138672a400b18c388b2e5ac915c3c9d651a1908.png': fileURLToPath(new URL('./src/assets/9138672a400b18c388b2e5ac915c3c9d651a1908.png', import.meta.url)),
+        'figma:asset/2bd5ea2fc5e21d5ff6a5d0a2672bd5685c545932.png': fileURLToPath(new URL('./src/assets/2bd5ea2fc5e21d5ff6a5d0a2672bd5685c545932.png', import.meta.url)),
         'embla-carousel-react@8.6.0': 'embla-carousel-react',
         'cmdk@1.1.1': 'cmdk',
         'class-variance-authority@0.7.1': 'class-variance-authority',
@@ -48,12 +49,12 @@
         '@radix-ui/react-aspect-ratio@1.1.2': '@radix-ui/react-aspect-ratio',
         '@radix-ui/react-alert-dialog@1.1.6': '@radix-ui/react-alert-dialog',
         '@radix-ui/react-accordion@1.2.3': '@radix-ui/react-accordion',
-        '@': path.resolve(__dirname, './src'),
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
       },
     },
     build: {
       target: 'esnext',
-      outDir: 'build',
+      outDir: 'dist',
     },
     server: {
       port: 3000,
